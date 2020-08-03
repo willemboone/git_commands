@@ -1,0 +1,33 @@
+# start git
+git init
+
+# configurate git
+git config --global user.name ""
+git config --global user.email""
+
+# git add files, the "." stands for all files in the directory
+git add .
+
+# if no message is apended, this will be asked in an editor
+# write message > escape > :wq > enter
+
+# git add with message between "message"
+git commit . -m""
+
+# show status
+git status
+
+# show all files
+ls
+
+# add a remote origin (e.g. github website)
+git remote add origin "https://github.com/willemboone/directory.git"
+
+# remove remote origin
+git remote rm origin
+
+# push to remote
+git push -u origin master
+
+# pull
+git pull
