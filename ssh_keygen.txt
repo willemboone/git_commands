@@ -1,0 +1,47 @@
+# the basic idea is to enhance security
+# instead of a single password, a pair of keys will be used
+# an password can still be set, when the keys are generated
+# the private key and public key match eachother
+# the public key is in the .ssh folder on the server
+# to connect to the server the private key is required
+# you should never share your private keys
+
+##################################################
+# on the client side (e.g. my windows laptop)
+##################################################
+# create a key-pair and save them in the user system
+
+# open cmd 
+ssh-keygen
+
+# add a password
+# save > enter (saved in user/.ssh folder)
+
+# specify folder
+ssh-keygen -f <file/name>
+
+##################################################
+# on the server side (e.g. my raspberry pi)
+##################################################
+# the public key needs to be added to the server
+# you can do this via the GIU or use the terminal
+# create a folder user/.ssh/
+# create file authorized_keys.txt with the public key
+# copy past in cmd is ctrl + shift + c/v
+# below are some helpful standard commands
+# addapt this and search more commands online if required
+
+# make the directory (if it doesnt exist yet)
+mkdir user/.ssh
+
+# restricted access
+chmod 700 [dir_name] 
+
+# create & open file with vim (might require to install vim)
+vim .ssh/authorized_keys
+> i  # insert
+> :w # write
+> :q # write
+
+# copy with ssh
+ssh-copy-id -i ~/.ssh/tatu-key-ecdsa user@host
