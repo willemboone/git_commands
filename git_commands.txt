@@ -23,6 +23,9 @@ ls
 # add a remote origin (e.g. github website)
 git remote add origin "https://github.com/willemboone/directory.git"
 
+# get remote
+git config --get remote.origin.url
+
 # remove remote origin
 git remote rm origin
 
