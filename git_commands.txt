@@ -32,5 +32,13 @@ git remote rm origin
 # push to remote
 git push -u origin master
 
+# if the contents of your local folder does not match the one on github 
+# (e.g. there are files on github with different name or that do not exist in your local repository)
+# you will get a failure notification "Updates were rejected because the remote contains work that you do ..."
+# a force push can solve this, but keep in mind it will entirely replace the files in the online repository
+
+# force push
+git push -f origin master
+
 # pull
 git pull
