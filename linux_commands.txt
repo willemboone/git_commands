@@ -1,0 +1,57 @@
+#######################################################
+# secure shell & secure copy
+#######################################################
+
+# ssh login
+ssh pi@XXX.XXX.X.XXX
+
+# secure copy from remote server to local
+scp pi@XXX.XXX.X.XXX:/home/pi/Documents/python_scripts/test.py drive:destination/
+
+# secure copy from remote to local, all files from directory
+scp -r pi@XXX.XXX.X.XXX:/home/pi/Documents/python_scripts drive:destination/
+
+# adress should not contain spaces (use "") or ':' or '/'
+
+########################################################
+# shutdown & reboot
+########################################################
+
+# shutdown (in some time, mostly takes a minute)
+sudo shutdown
+
+# shutdown right now
+sudo shutdown h- now
+
+# reboot
+sudo reboot
+
+########################################################
+# package management
+########################################################
+
+# update & upgrade
+sudo apt-get update name_of_target
+sudo apt-get upgrate name of target
+
+# delete
+sudo apt-get purge name_of_target
+sudo apt-get clean name_of_target
+sudo apt-get autoremove name_of_target
+
+########################################################
+# create & edit files
+########################################################
+
+sudo nano location/to/new/file
+>>> ctrl + o   # save
+>>> ctrl + x   # exit
+
+# delete file
+rm path/to/file
+>>> y
+>>> enter
+
+# delete file with sudo
+sudo rm filename
+

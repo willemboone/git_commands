@@ -1,0 +1,59 @@
+########################################################
+# start script on boot with cron
+########################################################
+
+# start on boot with cron
+# this dit not seem to work for me
+sudo crontab -e
+# edit & save
+@reboot python3 path/to/file.py
+
+########################################################
+# start script on boot with Desktop (GUI startup only)
+########################################################
+
+# start on boot with Dekstop
+# starts when debian GUI starts (so not for headless start!)
+sudo nano /etc/xdg/autostart/myappname.desktop
+# edit & save this file
+[Desktop Entry]
+Exec=sudo python3 path/to/file.py
+
+########################################################
+# start script on boot with Unit file [systemd]
+########################################################
+
+# Unit file [systemd]
+sudo nano /lib/systemd/system/name_of_file.service
+
+# edit & save
+[Unit]
+Description=Blink my LED
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/Documents/run_on_boot/monitoring.py
+
+[Install]
+WantedBy=multi-user.target
+
+# https://learn.sparkfun.com/tutorials/how-to-run-a-raspberry-pi-program-on-startup/all
+# Feel free to change the Description as desired. 
+# The After key denotes when our program should run. 
+# multi-user.target is the system state where control is given over to the user (a "multi-user shell") 
+# but before the X Windows System is started. That means our program will run even without logging in! 
+# You can change this, depending on which services you need active before running your program 
+# (for example, network.target if you need networking). See here for a listing of all targets.
+# 
+# ExecStart is the command (or set of commands) used to start our program. 
+Notice that we are using absolute paths to the version of Python we want as well as the location of our program.
+# 
+# WantedBy in the [Install] section specifies the target we want our service to be included with. 
+# In this example, we want our service to run when the multi-user.target unit is run 
+# (or, more specifically, just after it, based on the After parameter).
+
+sudo systemctl daemon-reload
+sudo systemctl enable name_of_service.service
+
+# stop a unit file [systemd]
+sudo systemctl stop name.service
